@@ -45,6 +45,22 @@ public class MainActivity extends AppCompatActivity
     DrawerLayout drawerLayout;
     @Bind(R.id.fab)
     FloatingActionButton fab;
+    @Bind(R.id.textComf)
+    TextView textComf;
+    @Bind(R.id.textCw)
+    TextView textCw;
+    @Bind(R.id.textDrsg)
+    TextView textDrsg;
+    @Bind(R.id.textFlu)
+    TextView textFlu;
+    @Bind(R.id.textSport)
+    TextView textSport;
+    @Bind(R.id.textTrav)
+    TextView textTrav;
+    @Bind(R.id.textUv)
+    TextView textUv;
+    @Bind(R.id.textUpdate)
+    TextView textUpdate;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -109,13 +125,29 @@ public class MainActivity extends AppCompatActivity
         String minTmp = dataEntity.getDaily_forecast().get(0).getTmp().getMin();
         String aqi = dataEntity.getAqi().getCity().getAqi();
         String qlty = dataEntity.getAqi().getCity().getQlty();
+        String comf = dataEntity.getSuggestion().getComf().getBrf();
+        String cw = dataEntity.getSuggestion().getCw().getBrf();
+        String drsg = dataEntity.getSuggestion().getDrsg().getBrf();
+        String flu = dataEntity.getSuggestion().getFlu().getBrf();
+        String sport = dataEntity.getSuggestion().getSport().getBrf();
+        String trav = dataEntity.getSuggestion().getTrav().getBrf();
+        String uv = dataEntity.getSuggestion().getUv().getBrf();
+        String update = dataEntity.getBasic().getUpdate().getLoc();
 
         textCond.setText(cond);
         textNowtmp.setText(nowTmp + "℃");
-        textOfftmp.setText(minTmp + " | " + maxTmp + "℃");
+        textOfftmp.setText(minTmp + " ~ " + maxTmp + "℃");
         textAqi.setText("空气质量： " + aqi);
         textQlf.setText(qlty);
         imageCond.setImageResource(mipmap);
+        textComf.setText(comf);
+        textCw.setText(cw);
+        textDrsg.setText(drsg);
+        textFlu.setText(flu);
+        textSport.setText(sport);
+        textTrav.setText(trav);
+        textUv.setText(uv);
+        textUpdate.setText("更新于 " + TimeUtil.formatDate(update));
     }
 
     @Override

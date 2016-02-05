@@ -22,4 +22,15 @@ public class TimeUtil {
             return DAY;
         }
     }
+
+    public static String getWeekday() {
+        long currentTimeMillis = System.currentTimeMillis();
+        Date date = new Date(currentTimeMillis);
+        SimpleDateFormat sdf = new SimpleDateFormat("E");
+        return sdf.format(date);
+    }
+
+    public static String formatDate(String originDate) {
+        return originDate.substring(5);
+    }
 }

@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="240dp"
+    android:layout_height="match_parent"
+    android:layout_gravity="end"
+    android:background="@color/colorPrimary"
+    android:orientation="vertical"
+    android:padding="12dp">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="20dp"
+        android:layout_marginTop="20dp"
+        android:text="生活建议"
+        android:textColor="@android:color/white"
+        android:textSize="30sp"
+        />
+
+
+    <android.support.v7.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        >
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:padding="10dp">
+
+            <TextView
+                android:id="@+id/textComfTitle"
+                style="@style/text_sug_style"
+                android:text="舒适指数： "/>
+
+            <TextView
+                android:id="@+id/textComf"
+                style="@style/warp_warp_style"
+                android:layout_alignBottom="@id/textComfTitle"
+                android:layout_toRightOf="@id/textComfTitle"/>
+
+            <TextView
+                android:id="@+id/textCwTitle"
+                style="@style/text_sug_style"
+                android:layout_below="@id/textComfTitle"
+                android:text="洗车指数： "/>
+
+            <TextView
+                android:id="@+id/textCw"
+                style="@style/warp_warp_style"
+                android:layout_alignBottom="@id/textCwTitle"
+                android:layout_toRightOf="@id/textCwTitle"/>
+
+            <TextView
+                android:id="@+id/textDrsgTitle"
+                style="@style/text_sug_style"
+                android:layout_below="@id/textCwTitle"
+                android:text="穿衣指数： "/>
+
+            <TextView
+                android:id="@+id/textDrsg"
+                style="@style/warp_warp_style"
+                android:layout_alignBottom="@id/textDrsgTitle"
+                android:layout_toRightOf="@id/textDrsgTitle"/>
+
+            <TextView
+                android:id="@+id/textFluTitle"
+                style="@style/text_sug_style"
+                android:layout_below="@id/textDrsgTitle"
+                android:text="感冒指数： "/>
+
+            <TextView
+                android:id="@+id/textFlu"
+                style="@style/warp_warp_style"
+                android:layout_alignBottom="@id/textFluTitle"
+                android:layout_toRightOf="@id/textFluTitle"/>
+
+            <TextView
+                android:id="@+id/textSportTitle"
+                style="@style/text_sug_style"
+                android:layout_below="@id/textFluTitle"
+                android:text="运动指数： "/>
+
+            <TextView
+                android:id="@+id/textSport"
+                style="@style/warp_warp_style"
+                android:layout_alignBottom="@id/textSportTitle"
+                android:layout_toRightOf="@id/textSportTitle"/>
+
+            <TextView
+                android:id="@+id/textTravTitle"
+                style="@style/text_sug_style"
+                android:layout_below="@id/textSportTitle"
+                android:text="旅游指数： "/>
+
+            <TextView
+                android:id="@+id/textTrav"
+                style="@style/warp_warp_style"
+                android:layout_alignBottom="@id/textTravTitle"
+                android:layout_toRightOf="@id/textTravTitle"/>
+
+            <TextView
+                android:id="@+id/textUvTitle"
+                style="@style/text_sug_style"
+                android:layout_below="@id/textTravTitle"
+                android:text="紫外线指数： "/>
+
+            <TextView
+                android:id="@+id/textUv"
+                style="@style/warp_warp_style"
+                android:layout_alignBottom="@id/textUvTitle"
+                android:layout_toRightOf="@id/textUvTitle"/>
+        </RelativeLayout>
+    </android.support.v7.widget.CardView>
+</LinearLayout>
