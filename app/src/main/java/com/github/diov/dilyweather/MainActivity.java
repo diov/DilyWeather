@@ -61,6 +61,24 @@ public class MainActivity extends AppCompatActivity
     TextView textUv;
     @Bind(R.id.textUpdate)
     TextView textUpdate;
+    @Bind(R.id.textForeDay1)
+    TextView textForeDay1;
+    @Bind(R.id.textFore1)
+    TextView textFore1;
+    @Bind(R.id.textForeDay2)
+    TextView textForeDay2;
+    @Bind(R.id.textFore2)
+    TextView textFore2;
+    @Bind(R.id.textForeDay3)
+    TextView textForeDay3;
+    @Bind(R.id.textFore3)
+    TextView textFore3;
+    @Bind(R.id.textForeCond1)
+    TextView textForeCond1;
+    @Bind(R.id.textForeCond2)
+    TextView textForeCond2;
+    @Bind(R.id.textForeCond3)
+    TextView textForeCond3;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -112,42 +130,44 @@ public class MainActivity extends AppCompatActivity
                 WeatherEngine.checkWeather();
             }
         });
+
     }
 
     @Subscribe(threadMode = ThreadMode.MAIN)
     public void showData(WeatherModel weatherModel) {
         WeatherModel.DataEntity dataEntity = weatherModel.getData().get(0);
-        String cond = dataEntity.getNow().getCond().getTxt();
         String code = dataEntity.getNow().getCond().getCode();
         int mipmap = getResources().getIdentifier("w" + code, "mipmap", getPackageName());
-        String nowTmp = dataEntity.getNow().getTmp();
-        String maxTmp = dataEntity.getDaily_forecast().get(0).getTmp().getMax();
-        String minTmp = dataEntity.getDaily_forecast().get(0).getTmp().getMin();
-        String aqi = dataEntity.getAqi().getCity().getAqi();
-        String qlty = dataEntity.getAqi().getCity().getQlty();
-        String comf = dataEntity.getSuggestion().getComf().getBrf();
-        String cw = dataEntity.getSuggestion().getCw().getBrf();
-        String drsg = dataEntity.getSuggestion().getDrsg().getBrf();
-        String flu = dataEntity.getSuggestion().getFlu().getBrf();
-        String sport = dataEntity.getSuggestion().getSport().getBrf();
-        String trav = dataEntity.getSuggestion().getTrav().getBrf();
-        String uv = dataEntity.getSuggestion().getUv().getBrf();
-        String update = dataEntity.getBasic().getUpdate().getLoc();
 
-        textCond.setText(cond);
-        textNowtmp.setText(nowTmp + "℃");
-        textOfftmp.setText(minTmp + " ~ " + maxTmp + "℃");
-        textAqi.setText("空气质量： " + aqi);
-        textQlf.setText(qlty);
+        textCond.setText(dataEntity.getNow().getCond().getTxt());
+        textNowtmp.setText(dataEntity.getNow().getTmp() + "℃");
+        textOfftmp.setText(dataEntity.getDaily_forecast().get(0).getTmp().getMin() + " ~ " + dataEntity
+                .getDaily_forecast().get(0).getTmp().getMax() + "℃");
+        textAqi.setText("空气质量： " + dataEntity.getAqi().getCity().getAqi());
+        textQlf.setText(dataEntity.getAqi().getCity().getQlty());
         imageCond.setImageResource(mipmap);
-        textComf.setText(comf);
-        textCw.setText(cw);
-        textDrsg.setText(drsg);
-        textFlu.setText(flu);
-        textSport.setText(sport);
-        textTrav.setText(trav);
-        textUv.setText(uv);
-        textUpdate.setText("更新于 " + TimeUtil.formatDate(update));
+        textComf.setText(dataEntity.getSuggestion().getComf().getBrf());
+        textCw.setText(dataEntity.getSuggestion().getCw().getBrf());
+        textDrsg.setText(dataEntity.getSuggestion().getDrsg().getBrf());
+        textFlu.setText(dataEntity.getSuggestion().getFlu().getBrf());
+        textSport.setText(dataEntity.getSuggestion().getSport().getBrf());
+        textTrav.setText(dataEntity.getSuggestion().getTrav().getBrf());
+        textUv.setText(dataEntity.getSuggestion().getUv().getBrf());
+        textUpdate.setText("更新于 " + TimeUtil.formatDate(dataEntity.getBasic().getUpdate().getLoc()));
+
+        textForeDay1.setText(TimeUtil.formatDate(dataEntity.getDaily_forecast().get(1).getDate()));
+        textForeDay2.setText(TimeUtil.formatDate(dataEntity.getDaily_forecast().get(2).getDate()));
+        textForeDay3.setText(TimeUtil.formatDate(dataEntity.getDaily_forecast().get(3).getDate()));
+        textForeCond1.setText(dataEntity.getDaily_forecast().get(1).getCond().getTxt_d());
+        textForeCond2.setText(dataEntity.getDaily_forecast().get(2).getCond().getTxt_d());
+        textForeCond3.setText(dataEntity.getDaily_forecast().get(3).getCond().getTxt_d());
+        textFore1.setText(dataEntity.getDaily_forecast().get(1).getTmp().getMin() + "~" + dataEntity
+                .getDaily_forecast().get(1).getTmp().getMax() + "℃");
+        textFore2.setText(dataEntity.getDaily_forecast().get(2).getTmp().getMin() + "~" + dataEntity
+                .getDaily_forecast().get(2).getTmp().getMax() + "℃");
+        textFore3.setText(dataEntity.getDaily_forecast().get(3).getTmp().getMin() + "~" + dataEntity
+                .getDaily_forecast().get(3).getTmp().getMax() + "℃");
+
     }
 
     @Override
